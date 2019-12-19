@@ -1,0 +1,31 @@
+{
+  "name": "sorting-and-searching-algorithm-visualizer",
+  "version": "1.0.0",
+  "description": "Visualization of sorting and searching algorithms.",
+  "main": "server.js",
+  "scripts": {
+    "client-install": "npm install --prefix client",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SuryaCruz/sorting-and-searching-algorithm-visualizer.git"
+  },
+  "author": "Surya Cruz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SuryaCruz/sorting-and-searching-algorithm-visualizer/issues"
+  },
+  "homepage": "https://github.com/SuryaCruz/sorting-and-searching-algorithm-visualizer#readme",
+  "dependencies": {
+    "concurrently": "^5.0.2",
+    "config": "^3.2.4",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
