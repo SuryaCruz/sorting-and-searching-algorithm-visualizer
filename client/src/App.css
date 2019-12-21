@@ -1,0 +1,20 @@
+.navBar{
+    width: 100%;
+    height: 100px;
+    background-color: #34495e;
+}
+
+.arrayInput{
+    width: 350px;
+    padding: 30px;
+    margin-right:20px;
+    display: inline-block;
+}
+
+.algorithms{
+    display: inline-block;
+}
+
+.buttonPadding{
+    margin-right:20px;  
+}
