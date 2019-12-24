@@ -11,20 +11,28 @@ import {
 class NavBar extends Component{
     constructor(props){
         super(props);
-        this.state = {search: true};
+        this.state = {search: true,array:[]};
         this.setSearch = this.setSearch.bind(this);
         this.setSort = this.setSort.bind(this);
+        this.changeArray = this.changeArray.bind(this);
     }
 
     setSearch(){
-        this.setState({search:true});
+        this.setState({search:true, array: this.state.array});
     }
 
     setSort(){
-        this.setState({search:false});
+        this.setState({search:false, array: this.state.array});
     }
 
+    changeArray(e){
+        this.setState({search:this.state.search, array: e.target.value});
+    }
+    
+
     render(){
+
+        var input = this.state.array;
         var show = this.state.search;
         const search = (
             <div className = "algorithms">
@@ -48,14 +56,12 @@ class NavBar extends Component{
             alg = sort;
         }
 
-
-
         return(
             <div className="navBar">
                 <div className = "arrayInput">
                     <InputGroup>
                         <InputGroupAddon addonType = "prepend"><Button size = "sm" color = "primary">Random</Button></InputGroupAddon>
-                        <Input placeholder = "eg: [ 1 , 2 , 3 ]" size = "sm"/>
+                        <Input placeholder = "eg: [ 1 , 2 , 3 ]" size = "sm" onChange = {this.changeArray}/>
                     </InputGroup>
                 </div>
                 <ButtonGroup className = "buttons">
