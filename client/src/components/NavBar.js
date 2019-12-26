@@ -15,6 +15,7 @@ class NavBar extends Component{
         this.setSearch = this.setSearch.bind(this);
         this.setSort = this.setSort.bind(this);
         this.changeArray = this.changeArray.bind(this);
+        this.randomArray = this.randomArray.bind(this);
     }
 
     setSearch(){
@@ -26,13 +27,14 @@ class NavBar extends Component{
     }
 
     changeArray(e){
+        var txt = e.target.value;
         var invalid = false;
         var input = e.target.value.split("");
         var stri = "";
         for (var i of input){
             if(!(i === '[' || i === ']' || i === ' ' || i === ',' || (i >= '0' && i <= '9'))){
                 invalid = true;
-                numbers = [];
+                var numbers = [];
                 break;
             }else{
                 if(!(i === '[' || i === ']' || i === ' ')){
@@ -50,6 +52,26 @@ class NavBar extends Component{
         }
         console.log(numbers);
         this.setState({search:this.state.search, array: numbers,check: invalid});
+    }
+
+    randomArray(e){
+        var arrayLength = Math.floor(Math.random() * 20) + 5;
+        var randomArray = [];
+        var arrayStr = "[ ";
+        for (var i = 0; i < arrayLength; i++){
+            var number = Math.floor(Math.random() * 300);
+            randomArray.push(number);
+            if(i !== 0){
+                arrayStr = arrayStr + " , " + number.toString();
+            }else{
+                arrayStr = arrayStr + number.toString();
+            }
+        }
+        
+        arrayStr = arrayStr + " ]";
+        document.getElementById("input").value = arrayStr;
+        this.setState({search:this.state.search, array: randomArray,check: false})
+        console.log(randomArray);
     }
     
 
@@ -84,8 +106,8 @@ class NavBar extends Component{
             <div className="navBar">
                 <div className = "arrayInput">
                     <InputGroup>
-                        <InputGroupAddon addonType = "prepend"><Button size = "sm" color = "primary">Random</Button></InputGroupAddon>
-                        <Input invalid = {this.state.check} placeholder = "eg: [ 1 , 2 , 3 ]" size = "sm" onChange = {this.changeArray}/>
+                        <InputGroupAddon addonType = "prepend"><Button size = "sm" color = "primary" onClick = {this.randomArray}>Random</Button></InputGroupAddon>
+                        <Input invalid = {this.state.check} placeholder = "eg: [ 1 , 2 , 3 ]" size = "sm" onChange = {this.changeArray} id = "input"/>
                     </InputGroup>
                 </div>
                 <ButtonGroup className = "buttons">
